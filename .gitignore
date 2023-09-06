@@ -39,7 +39,3 @@ lerna-debug.log*
 
 # Docker
 data
-
-# Key
-private.key
-public.key
