@@ -38,8 +38,15 @@ Todos os comandos a seguir devem ser executados no terminal:
 
 Antes de executar o comando, ter certeza que apagou todos os arquivos dentro de prisma/migrations
 
+Criar:
+
 ``
     pnpm prisma migrate dev
+``
+
+Gerar existentes:
+``
+    pnpm prisma migrate deploy
 ``
 
 Em caso de erro, com o docker rodando, execute: 
