@@ -4,19 +4,21 @@
       pnpm i dotenv -D
 */
 
+import 'dotenv/config'
+
 import { PrismaClient } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
-import 'dotenv/config'
 import { execSync } from 'node:child_process'
 
 const prisma = new PrismaClient()
 
-function gerenateUniqueDatabaseURL(schemaId: string) {
+function generateUniqueDatabaseURL(schemaId: string) {
   if (!process.env.DATABASE_URL) {
-    throw new Error('Please provide a DATABASE_URL environment variable.')
+    throw new Error('Please provider a DATABASE_URL environment variable')
   }
 
   const url = new URL(process.env.DATABASE_URL)
+
   url.searchParams.set('schema', schemaId)
 
   return url.toString()
@@ -25,9 +27,9 @@ function gerenateUniqueDatabaseURL(schemaId: string) {
 const schemaId = randomUUID()
 
 beforeAll(async () => {
-  const databaseUrl = gerenateUniqueDatabaseURL(schemaId)
+  const databaseURL = generateUniqueDatabaseURL(schemaId)
 
-  process.env.DATABASE_URL = databaseUrl
+  process.env.DATABASE_URL = databaseURL
 
   execSync('pnpm prisma migrate deploy')
 })
