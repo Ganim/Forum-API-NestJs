@@ -57,12 +57,12 @@ describe('Fetch recent questions (E2E)', () => {
       .send()
 
     expect(response.statusCode).toBe(200)
-    /*
+
     expect(response.body).toEqual({
       questions: [
         expect.objectContaining({ title: 'Question 01' }),
         expect.objectContaining({ title: 'Question 02' }),
       ],
-    }) */
+    })
   })
 })
