@@ -4,6 +4,7 @@ import { envSchema } from './env'
 import { AuthModule } from './auth/auth.module.'
 import { HttpModule } from './http/http.module'
 import { DatabaseModule } from './database/database.module'
+import { CryptographyModule } from './cryptography/cryptography.module'
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { DatabaseModule } from './database/database.module'
       validate: (env) => envSchema.parse(env),
       isGlobal: true,
     }),
+    CryptographyModule,
     AuthModule,
     HttpModule,
     DatabaseModule,
