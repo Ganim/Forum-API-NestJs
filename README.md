@@ -28,7 +28,7 @@ Todos os comandos a seguir devem ser executados no terminal:
     docker compose up -d
 ``
 
-#### Inicie o prisma
+#### Inicie o prisma (primeira instalação)
 
 ``
     pnpm prisma generate
@@ -38,7 +38,7 @@ Todos os comandos a seguir devem ser executados no terminal:
 
 Antes de executar o comando, ter certeza que apagou todos os arquivos dentro de prisma/migrations
 
-Criar:
+Criar / Atualizar sempre que houver mudanças:
 
 ``
     pnpm prisma migrate dev
@@ -56,7 +56,7 @@ Em caso de erro, com o docker rodando, execute:
 ``
 
 
-### Criar as chaves publicas e privadas
+### Criar as chaves publicas e privadas, Caso não tenha
 
 No terminal WSL2 rodar os seguintes comandos
 
@@ -87,6 +87,9 @@ echo "JWT_PRIVATE_KEY=\"$JWT_PRIVATE_KEY\"" >> .env``
 
 #### Iniciando o Docker
 Antes de mais nada abra o Docker Desktop e inicie o banco de dados.
+
+#### Iniciar o DB no docker
+``docker-compose up -d``
 
 
 #### Iniciando o Nest
