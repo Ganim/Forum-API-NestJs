@@ -1,17 +1,17 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { FetchQuestionCommentsUseCase } from './fetch-question-comments'
 import { makeQuestionComment } from 'test/factories/make-question-comment'
 
 /* npm i vvite-tsconfig-paths -D */
 /* sut : System under test -> neste caso será o createQuestion */
-let inMemoryQuestionCommentRepository: InMemoryQuestionsCommentsRepository
+let inMemoryQuestionCommentRepository: InMemoryQuestionCommentsRepository
 let sut: FetchQuestionCommentsUseCase
 
 describe('Fetch Question Comments', () => {
   beforeEach(() => {
     inMemoryQuestionCommentRepository =
-      new InMemoryQuestionsCommentsRepository()
+      new InMemoryQuestionCommentsRepository()
     sut = new FetchQuestionCommentsUseCase(inMemoryQuestionCommentRepository)
   })
 

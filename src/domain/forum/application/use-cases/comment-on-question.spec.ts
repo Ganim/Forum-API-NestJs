@@ -1,13 +1,13 @@
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 import { makeQuestion } from 'test/factories/make-question'
-import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { CommentOnQuestionUseCase } from './comment-on-question'
 import { InMemoryQuestionAttachmentRepository } from 'test/repositories/in-memory-question-attachments-repository'
 
 /* npm i vvite-tsconfig-paths -D */
 /* sut : System under test -> neste caso será o createAnswer */
 let inMemoryQuestionRepository: InMemoryQuestionsRepository
-let inMemoryQuestionCommentsRepository: InMemoryQuestionsCommentsRepository
+let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentRepository
 let sut: CommentOnQuestionUseCase
 
@@ -19,7 +19,7 @@ describe('Comment on Question', () => {
       inMemoryQuestionAttachmentsRepository,
     )
     inMemoryQuestionCommentsRepository =
-      new InMemoryQuestionsCommentsRepository()
+      new InMemoryQuestionCommentsRepository()
 
     sut = new CommentOnQuestionUseCase(
       inMemoryQuestionRepository,

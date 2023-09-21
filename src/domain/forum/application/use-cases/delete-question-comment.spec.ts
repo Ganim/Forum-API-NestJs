@@ -1,4 +1,4 @@
-import { InMemoryQuestionsCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
+import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { DeleteQuestionCommentUseCase } from './delete-question-comment'
 import { makeQuestionComment } from 'test/factories/make-question-comment'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
@@ -6,13 +6,13 @@ import { NotAllowedError } from '@/core/errors/errors/not-allowed-error'
 
 /* npm i vvite-tsconfig-paths -D */
 /* sut : System under test -> neste caso será o createAnswer */
-let inMemoryQuestionCommentsRepository: InMemoryQuestionsCommentsRepository
+let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository
 let sut: DeleteQuestionCommentUseCase
 
 describe('Delete Question Comment', () => {
   beforeEach(() => {
     inMemoryQuestionCommentsRepository =
-      new InMemoryQuestionsCommentsRepository()
+      new InMemoryQuestionCommentsRepository()
 
     sut = new DeleteQuestionCommentUseCase(inMemoryQuestionCommentsRepository)
   })
