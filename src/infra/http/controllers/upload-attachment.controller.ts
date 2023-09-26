@@ -6,7 +6,10 @@
     pnpm i -D @types/multer
 */
 
+import { InvalidAttachmentTypeError } from '@/domain/forum/application/use-cases/errors/invalid-attachment-types-error'
+import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/upload-and-create-attachment'
 import {
+  BadRequestException,
   Controller,
   FileTypeValidator,
   MaxFileSizeValidator,
@@ -19,7 +22,9 @@ import { FileInterceptor } from '@nestjs/platform-express'
 
 @Controller('/attachments')
 export class UploadAttachmentController {
-  // constructor() {}
+  constructor(
+    private uploadAndCreateAttachment: UploadAndCreateAttachmentUseCase,
+  ) {}
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))
@@ -38,6 +43,26 @@ export class UploadAttachmentController {
     )
     file: Express.Multer.File,
   ) {
-    console.log(file)
+    const result = await this.uploadAndCreateAttachment.execute({
+      fileName: file.originalname,
+      fileType: file.mimetype,
+      body: file.buffer,
+    })
+
+    if (result.isLeft()) {
+      const error = result.value
+      switch (error.constructor) {
+        case InvalidAttachmentTypeError:
+          throw new BadRequestException(error.message)
+        default:
+          throw new BadRequestException(error.message)
+      }
+    }
+
+    const { attachment } = result.value
+
+    return {
+      attachmentId: attachment.id.toString(),
+    }
   }
 }
