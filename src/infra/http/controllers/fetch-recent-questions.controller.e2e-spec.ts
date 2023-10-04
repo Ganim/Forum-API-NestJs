@@ -20,6 +20,7 @@ describe('Fetch recent questions (E2E)', () => {
     }).compile()
 
     app = moduleRef.createNestApplication()
+
     studentFactory = moduleRef.get(StudentFactory)
     questionFactory = moduleRef.get(QuestionFactory)
     jwt = moduleRef.get(JwtService)
