@@ -1,8 +1,7 @@
 
-# IGNITE - NestJS
+# Fórum API - NestJS
 
 Este repositório possui os arquivos desenvolvidos no módulo de estudo sobre NestJS do ignite da rockeatseat. 
-
 
 
 
